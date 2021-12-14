@@ -2,28 +2,28 @@
 
 class pluginAnnouncement extends Plugin {
 
-	public function init()
-	{
-		$this->dbFields = array(
-			'start'=>'1970-01-01 00:00:00',
+    public function init()
+    {
+        $this->dbFields = array(
+            'start'=>'1970-01-01 00:00:00',
             'end' => '2042-12-31 23:59:59',
             'text' => '',
             'bordercolor' => 'darkblue',
             'borderwidth' => '1px'
-		);
-	}
+        );
+    }
 
-	public function form()
-	{
-		global $L;
+    public function form()
+    {
+        global $L;
 
-		$html  = '<div class="alert alert-primary" role="alert">';
-		$html .= $this->description();
-		$html .= '</div>';
+        $html  = '<div class="alert alert-primary" role="alert">';
+        $html .= $this->description();
+        $html .= '</div>';
 
-		$html .= '<div>';
-		$html .= '<label>'.$L->get('Start').'</label>';
-		$html .= '<input name="start" type="text" value="'.$this->getValue('start').'">';
+        $html .= '<div>';
+        $html .= '<label>'.$L->get('Start').'</label>';
+        $html .= '<input name="start" type="text" value="'.$this->getValue('start').'">';
         $html .= '<label>'.$L->get('End').'</label>';
         $html .= '<input name="end" type="text" value="'.$this->getValue('end').'">';
         $html .= '<label>'.$L->get('Bordercolor').'</label>';
@@ -33,12 +33,12 @@ class pluginAnnouncement extends Plugin {
         $html .= '<label>'.$L->get('Text').'</label>';
         $html .= '<textarea name="text">'.$this->getValue('text').'</textarea>';
         $html .= '<span class="tip">'.$L->get('HTML allowed').'</span>';
-		$html .= '</div>';
+        $html .= '</div>';
 
-		return $html;
-	}
+        return $html;
+    }
 
-	public function siteHead()
+    public function siteHead()
     {
         $html = '';
         if ($this->shouldBeVisible()) {
@@ -51,12 +51,18 @@ class pluginAnnouncement extends Plugin {
                                 padding: 2px;
                                 text-align: center;
                            }
-                       </style>';
-
-            $html .= '<div class="announcement">' . $this->getValue('text',false) . '</div>';
+                       </style>
+                       <script type="text/javascript">
+                             window.onload = function () {
+                                    banner = document.createElement("div");
+                                    banner.setAttribute("class","announcement");
+                                    banner.innerHTML = "'.str_replace(["\n","\r"],'',str_replace('"','\"',$this->getValue('text',false))) .'";
+                                    document.body.insertBefore(banner,document.body.firstChild);
+                                }
+                        </script>';
         }
-		return $html;
-	}
+        return $html;
+    }
 
     private function shouldBeVisible(){
         $filled = strlen($this->getValue('text')) > 0;
