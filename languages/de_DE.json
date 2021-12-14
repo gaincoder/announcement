@@ -8,5 +8,6 @@
 	"start": "Start",
 	"end": "Ende",
 	"bordercolor": "Rahmenfarbe",
+	"borderwidth": "Rahmenbreite",
 	"text": "Inhalt"
 }

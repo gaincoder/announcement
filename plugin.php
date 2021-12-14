@@ -8,7 +8,8 @@ class pluginAnnouncement extends Plugin {
 			'start'=>'1970-01-01 00:00:00',
             'end' => '2042-12-31 23:59:59',
             'text' => '',
-            'bordercolor' => 'darkblue'
+            'bordercolor' => 'darkblue',
+            'borderwidth' => '1px'
 		);
 	}
 
@@ -27,6 +28,8 @@ class pluginAnnouncement extends Plugin {
         $html .= '<input name="end" type="text" value="'.$this->getValue('end').'">';
         $html .= '<label>'.$L->get('Bordercolor').'</label>';
         $html .= '<input name="bordercolor" type="text" value="'.$this->getValue('bordercolor').'">';
+        $html .= '<label>'.$L->get('Borderwidth').'</label>';
+        $html .= '<input name="borderwidth" type="text" value="'.$this->getValue('borderwidth').'">';
         $html .= '<label>'.$L->get('Text').'</label>';
         $html .= '<textarea name="text">'.$this->getValue('text').'</textarea>';
         $html .= '<span class="tip">'.$L->get('HTML allowed').'</span>';
@@ -43,7 +46,7 @@ class pluginAnnouncement extends Plugin {
             $html .= '<style media="screen">
                            .announcement{
                                 position: relative;
-                                border: 1px '.$this->getValue('bordercolor').' solid;
+                                border: '.$this->getValue('borderwidth').' '.$this->getValue('bordercolor').' solid;
                                 margin: 2px;
                                 padding: 2px;
                                 text-align: center;

@@ -8,5 +8,6 @@
 	"start": "Start",
 	"end": "End",
 	"bordercolor": "Border color",
+	"borderwidth": "Border width",
 	"text": "Content"
 }
