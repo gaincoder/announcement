@@ -22,7 +22,7 @@ class pluginAnnouncement extends Plugin {
 
 		$html .= '<div>';
 		$html .= '<label>'.$L->get('Start').'</label>';
-		$html .= '<input name="label" type="text" value="'.$this->getValue('start').'">';
+		$html .= '<input name="start" type="text" value="'.$this->getValue('start').'">';
         $html .= '<label>'.$L->get('End').'</label>';
         $html .= '<input name="end" type="text" value="'.$this->getValue('end').'">';
         $html .= '<label>'.$L->get('Bordercolor').'</label>';
