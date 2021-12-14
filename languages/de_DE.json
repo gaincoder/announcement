@@ -1,0 +1,12 @@
+{
+	"plugin-data":
+	{
+		"name": "Announcement",
+		"description": "Dieses Plugin zeigt einen Ankündigungs-Banner über jeder Seite."
+	},
+	"html-allowed": "HTML erlaubt",
+	"start": "Start",
+	"end": "Ende",
+	"bordercolor": "Rahmenfarbe",
+	"text": "Inhalt"
+}
